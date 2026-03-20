@@ -3,19 +3,18 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
+    flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
-  outputs = { self, nixpkgs, flake-utils, ... }:
-    flake-utils.lib.eachDefaultSystem (system:
-      let
-        pkgs = import nixpkgs { inherit system; };
-      in
-        {
-          devShell = pkgs.mkShell {
-            buildInputs = with pkgs; [
-            ];
-          };
-        }
-    );
+  outputs = inputs@{ self, nixpkgs, flake-parts, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } (top@{ config, withSystem, ... }: {
+      imports = [];
+      flake = {};
+      systems = [];
+      perSystem = { config, pkgs, ... }: {
+        devShell = pkgs.mkShell {
+          buildInputs = with pkgs; [];
+        };
+      };
+    });
 }
