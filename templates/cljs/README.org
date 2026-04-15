@@ -1,0 +1,6 @@
+* Getting started
+
+#+begin_src bash
+  $ direnv allow
+  $ init
+#+end_src

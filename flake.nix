@@ -14,6 +14,10 @@
         path = ./templates/clj;
         description = "A simple clojure nix flake template";
       };
+      cljs = {
+        path = ./templates/cljs;
+        description = "A simple clojurescript nix flake template";
+      };
       minimal = {
         path = ./templates/minimal;
         description = "A minimal nix flake template";

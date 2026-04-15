@@ -1,0 +1,12 @@
+{
+  "name": "__PROJECT_NAME__",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest",
+    "shadow-cljs": "^3.4.2"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}

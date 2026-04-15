@@ -1,0 +1,3 @@
+{:tasks
+ {init {:doc "Initialize project"
+        :task (shell "bb scripts/init.clj")}}}
