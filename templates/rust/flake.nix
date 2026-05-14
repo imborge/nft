@@ -23,9 +23,15 @@
       systems = [
         "x86_64-linux"
       ];
-      perSystem = { config, pkgs, ... }: {
-        rust-project.crates.rust.path = ./.;
+
+      perSystem = { self', config, pkgs, ... }: {
+
+        rust-project = {
+          crateNixFile = "crate.nix";
+        };
+
         devShells.default = config.devShells.rust;
+        # package.default = self'.packages.main-crate;
       };
     });
 }

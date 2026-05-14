@@ -1,0 +1,11 @@
+[package]
+name = "projectname-main"
+description = "yeeehaa"
+version.workspace = true
+edition.workspace = true
+
+[[bin]]
+name = "projectname-main"
+path = "src/main.rs"
+
+[dependencies]
