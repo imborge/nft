@@ -27,10 +27,44 @@
       perSystem = { self', config, pkgs, ... }: {
 
         rust-project = {
-          crateNixFile = "crate.nix";
+          # crateNixFile = "crate.nix";
+          crates.my-app = {
+            path = ./.;
+            crane.args = {
+              buildInputs = with pkgs; [
+                # pkg-config
+                # clang
+                # llvmPackages_latest.bintools
+                # udev.dev
+                # libudev-zero
+                # alsa-lib.dev
+                # vulkan-loader
+                # xorg.libX11
+                # xorg.libXcursor
+                # xorg.libXi
+                # xorg.libXrandr
+                # libxkbcommon
+                # wayland.dev
+                # glibc.dev
+                # glib.dev
+              ];
+            };
+          };
         };
 
-        devShells.default = config.devShells.rust;
+        devShells.default = config.devShells.rust.overrideAttrs (old: rec {
+            LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
+              # pkgs.vulkan-loader
+              # pkgs.xorg.libX11
+              # pkgs.xorg.libXi
+              # pkgs.xorg.libXcursor
+              # pkgs.libxkbcommon
+              # pkgs.wayland
+              # pkgs.libudev-zero
+              # pkgs.udev
+            ]
+            ;
+        });
         # package.default = self'.packages.main-crate;
       };
     });

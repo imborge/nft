@@ -1,12 +1,12 @@
 [package]
-name = "projectname"
+name = "my-app"
 version = "0.1.0"
 edition = "2024"
+description = "Some description"
 
 [workspace]
 resolver = "3"
-members = [
-  "crates/projectname-main"
-]
+
+[dependencies]
 
 [workspace.dependencies]
