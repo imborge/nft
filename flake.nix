@@ -10,6 +10,10 @@
         path = ./templates/rust;
         description = "A simple rust nix flake template";
       };
+      bevy = {
+        path = ./templates/bevy;
+        description = "A rust, bevy & wayland nix flake template";
+      };
       clj = {
         path = ./templates/clj;
         description = "A simple clojure nix flake template";
